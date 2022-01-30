@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Media;
 use Illuminate\Http\Request;
 
 class TableController extends Controller
@@ -21,8 +22,11 @@ class TableController extends Controller
       $breadcrumbs = [
           ['link'=>"dashboard-analytics",'name'=>"Home"], ['name'=>"Datatable"]
       ];
-      return view('pages.table-datatable', [
-          'breadcrumbs' => $breadcrumbs
+
+      $medias = Media::latest()->get();
+      // dd($medias);
+      return view('pages.table-datatable', compact('medias'),[
+          'breadcrumbs' => $breadcrumbs,
       ]);
     }
 

@@ -4,8 +4,11 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExtensionController;
+use App\Http\Controllers\ExtraComponentsController;
 use App\Http\Controllers\FormsController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\MediaController;
+use App\Http\Controllers\PagesController;
 use App\Http\Controllers\TableController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,7 +44,11 @@ use Illuminate\Support\Facades\Route;
   Route::get('/ext-component-file-uploader', [ExtensionController::class, 'file_uploader']);
   Route::get('/table-datatable', [TableController::class, 'datatable']);
   Route::get('/form-input', [FormsController::class, 'input']);
+  Route::post('media-store', [MediaController::class, 'store'])->name('media.store');
+  Route::get('media-view/{id}', [MediaController::class, 'show'])->name('media.show');
+  Route::get('/page-invoice', [PagesController::class, 'invoice']);
   Route::get('/', [DashboardController::class, 'dashboardAnalytics'])->name('dashboard');
+  Route::get('/ex-component-chips', [ExtraComponentsController::class, 'chips']);
   Route::get('/dashboard-ecommerce', 'DashboardController@dashboardEcommerce');
 
 
@@ -112,7 +119,6 @@ use Illuminate\Support\Facades\Route;
 
   // Route Extra Components
   Route::get('/ex-component-avatar', 'ExtraComponentsController@avatar');
-  Route::get('/ex-component-chips', 'ExtraComponentsController@chips');
   Route::get('/ex-component-divider', 'ExtraComponentsController@divider');
 
   // Route Forms

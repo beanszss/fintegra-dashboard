@@ -25,13 +25,19 @@
         <div class="card-content">
           <div class="card-body card-dashboard">
             <div class="col-lg-6 col-md-12">
-                <fieldset class="form-group">
-                    <label for="basicInputFile">Pilih File</label>
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="inputGroupFile01">
-                        <label class="custom-file-label" for="inputGroupFile01">Pilih File</label>
-                    </div>
-                </fieldset>
+              <form action="{{ route('media.store') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group">
+                  <label for="basicInputFile">Pilih File</label>
+                  <div class="custom-file">
+                    <input type="file" class="form-control" id="inputGroupFile01" name="file">
+                    <label class="custom-file-label" for="inputGroupFile01">Pilih File</label>
+                  </div>
+                  <div class="form-group">
+                    <button class="btn btn-primary mr-1 mb-1">Submit</button>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
         </div>
@@ -50,17 +56,43 @@
           <div class="card-body card-dashboard">
             <div class="table-responsive">
               <table class="table zero-configuration">
-                <thead>
+                <thead class="text-center">
                   <tr>
                     <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
-                    <th>Salary</th>
+                    <th>File</th>
+                    <th>Extension</th>
+                    <th>Size</th>
+                    <th>Mime</th>
+                    <th>Created At</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody class="text-center">
+                  @if ($medias->count())
+                  @foreach ($medias as $media)
+                  <tr>
+                    <td>{{ $media->name }}</td>
+                    <td>{{ $media->file }}</td>
+                    <td>{{ $media->extension }}</td>
+                    <td>{{ $media->size }}</td>
+                    <td>{{ $media->mime }}</td>
+                    <td>{{ $media->created_at }}</td>
+                    <td>
+                      <form action="" method="post">
+                        @csrf
+                        <a href="{{ route('media.show', $media->id) }}" class="item-edit" type="button" target="_blank">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-edit font-small-4">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                          </svg>
+                        </a>
+                      </form>
+                    </td>
+                  </tr>
+                  @endforeach
+                  @endif
                 </tbody>
               </table>
             </div>

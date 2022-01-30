@@ -13,8 +13,12 @@
     </div>
     <div class="card-content">
       <div class="card-body">
-        <iframe src="{{ asset('uploads/' . $media->file) }}" frameborder="0" class="media" width="100%" height="1000"
+        <iframe src="{{ asset('uploads/' . $medias->file) }}" frameborder="0" class="media" width="100%" height="1000"
           alt="pdf"></iframe>
+        {{-- @if ($medias->extension == 'jpeg')
+        <iframe src="{{ asset('uploads/' . $medias->file) }}" frameborder="0" class="media" width="100%" height="1000"
+          alt="pdf"></iframe>
+        @endif --}}
       </div>
     </div>
   </div>

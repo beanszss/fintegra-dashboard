@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Media;
 use Illuminate\Http\Request;
 
 class ExtraComponentsController extends Controller
@@ -21,7 +22,12 @@ class ExtraComponentsController extends Controller
       $breadcrumbs = [
           ['link'=>"dashboard-analytics",'name'=>"Home"],['link'=>"dashboard-analytics",'name'=>"Extra Components"], ['name'=>"Chips"]
       ];
-      return view('/pages/ex-component-chips', [
+      $medias = Media::latest()->get();
+
+      foreach ($medias as $id => $media) {
+        $media->file;
+      }
+      return view('pages.ex-component-chips', compact('media'), [
           'breadcrumbs' => $breadcrumbs
       ]);
     }
