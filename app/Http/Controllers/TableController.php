@@ -21,7 +21,7 @@ class TableController extends Controller
       $breadcrumbs = [
           ['link'=>"dashboard-analytics",'name'=>"Home"], ['name'=>"Datatable"]
       ];
-      return view('/pages/table-datatable', [
+      return view('pages.table-datatable', [
           'breadcrumbs' => $breadcrumbs
       ]);
     }

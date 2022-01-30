@@ -51,7 +51,7 @@ class FormsController extends Controller
       $breadcrumbs = [
           ['link'=>"dashboard-analytics",'name'=>"Home"], ['link'=>"dashboard-analytics",'name'=>"Form Elements"], ['name'=>"Input"]
       ];
-      return view('/pages/form-input', [
+      return view('pages.form-input', [
           'breadcrumbs' => $breadcrumbs
       ]);
     }
