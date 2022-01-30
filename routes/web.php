@@ -41,15 +41,15 @@ use Illuminate\Support\Facades\Route;
 
 // });
 
-  Route::get('/ext-component-file-uploader', [ExtensionController::class, 'file_uploader']);
-  Route::get('/table-datatable', [TableController::class, 'datatable']);
-  Route::get('/form-input', [FormsController::class, 'input']);
+  // Route::get('/ext-component-file-uploader', [ExtensionController::class, 'file_uploader']);
+  Route::get('/', [TableController::class, 'datatable']);
+  // Route::get('/form-input', [FormsController::class, 'input']);
   Route::post('media-store', [MediaController::class, 'store'])->name('media.store');
   Route::get('media-view/{id}', [MediaController::class, 'show'])->name('media.show');
-  Route::get('/page-invoice', [PagesController::class, 'invoice']);
-  Route::get('/', [DashboardController::class, 'dashboardAnalytics'])->name('dashboard');
-  Route::get('/ex-component-chips', [ExtraComponentsController::class, 'chips']);
-  Route::get('/dashboard-ecommerce', 'DashboardController@dashboardEcommerce');
+  // Route::get('/page-invoice', [PagesController::class, 'invoice']);
+  // Route::get('dashboard-analytics', [DashboardController::class, 'dashboardAnalytics'])->name('dashboard');
+  // Route::get('/ex-component-chips', [ExtraComponentsController::class, 'chips']);
+  // Route::get('/dashboard-ecommerce', 'DashboardController@dashboardEcommerce');
 
 
   // Route Apps
